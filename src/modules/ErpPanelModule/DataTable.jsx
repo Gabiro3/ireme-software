@@ -33,7 +33,7 @@ function AddNewItem({ config }) {
   };
 
   return (
-    <Button onClick={handleClick} type="primary" icon={<PlusOutlined />}>
+    <Button onClick={handleClick} type="primary" icon={<PlusOutlined />} style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
       {ADD_NEW_ENTITY}
     </Button>
   );
@@ -191,7 +191,7 @@ export default function DataTable({ config, extra = [] }) {
             // withRedirect
             // urlToRedirect={'/customer'}
           />,
-          <Button onClick={handelDataTableLoad} key={`${uniqueId()}`} icon={<RedoOutlined />}>
+          <Button onClick={handelDataTableLoad} key={`${uniqueId()}`} icon={<RedoOutlined />} style={{borderRadius: '7px'}}>
             {translate('Refresh')}
           </Button>,
 

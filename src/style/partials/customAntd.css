@@ -1,8 +1,8 @@
 .ant-layout {
-  background: #ffffff !important;
+  background: #fafbfc !important;
 }
 .site-layout .site-layout-background {
-  background: #fff;
+  background: #89a8fd;
 }
 [data-theme='dark'] .site-layout .site-layout-background {
   background: #141414;

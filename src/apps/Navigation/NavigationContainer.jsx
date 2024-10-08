@@ -139,8 +139,10 @@ function Sidebar({ collapsible, isMobile = false }) {
           // border: 'none',
           ['left']: '20px',
           top: '20px',
-          // borderRadius: '8px',
+          borderRadius: '8px',
+          backgroundColor: '#fafbfc',
         }),
+        
       }}
       theme={'light'}
     >
@@ -172,6 +174,7 @@ function Sidebar({ collapsible, isMobile = false }) {
         selectedKeys={[currentPath]}
         style={{
           width: 256,
+          backgroundColor: '#fafbfc'
         }}
       />
     </Sider>

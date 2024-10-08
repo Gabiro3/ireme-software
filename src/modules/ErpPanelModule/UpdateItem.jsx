@@ -25,7 +25,7 @@ function SaveForm({ form, translate }) {
   };
 
   return (
-    <Button onClick={handelClick} type="primary" icon={<PlusOutlined />}>
+    <Button onClick={handelClick} type="primary" icon={<PlusOutlined />} style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
       {translate('update')}
     </Button>
   );

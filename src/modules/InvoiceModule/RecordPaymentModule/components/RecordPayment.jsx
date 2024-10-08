@@ -63,7 +63,7 @@ export default function RecordPayment({ config }) {
       <Form form={form} layout="vertical" onFinish={onSubmit}>
         <PaymentForm maxAmount={maxAmount} />
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
             {translate('Record Payment')}
           </Button>
         </Form.Item>

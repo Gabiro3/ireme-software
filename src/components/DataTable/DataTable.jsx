@@ -34,7 +34,7 @@ function AddNewItem({ config }) {
   };
 
   return (
-    <Button onClick={handelClick} type="primary">
+    <Button onClick={handelClick} type="primary" style={{ borderRadius: '8px', backgroundColor:'#153fd6' }}>
       {ADD_NEW_ENTITY}
     </Button>
   );
@@ -188,8 +188,9 @@ export default function DataTable({ config, extra = [] }) {
             onChange={filterTable}
             placeholder={translate('search')}
             allowClear
+            style={{borderRadius: '8px'}}
           />,
-          <Button onClick={handelDataTableLoad} key={`${uniqueId()}`} icon={<RedoOutlined />}>
+          <Button onClick={handelDataTableLoad} key={`${uniqueId()}`} icon={<RedoOutlined/>} style={{borderRadius: '8px'}}>
             {translate('Refresh')}
           </Button>,
 

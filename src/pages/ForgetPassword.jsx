@@ -40,7 +40,7 @@ const ForgetPassword = () => {
         >
           <ForgetPasswordForm />
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" size="large">
+            <Button type="primary" htmlType="submit" className="login-form-button" size="large" style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
               {translate('Request new Password')}
             </Button>
             {translate('Or')} <a href="/login"> {translate('already have account Login')} </a>

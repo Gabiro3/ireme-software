@@ -59,7 +59,7 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
               paddingRight: '5px',
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
               {translate('Save')}
             </Button>
           </Form.Item>

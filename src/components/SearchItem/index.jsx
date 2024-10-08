@@ -101,7 +101,7 @@ function SearchItemComponent({ config, onRerender }) {
       notFoundContent={searching ? '... Searching' : <Empty />}
       value={currentValue}
       onSearch={onSearch}
-      style={{ width: '100%' }}
+      style={{ width: '100%', borderRadius: '8px' }}
       onSelect={onSelect}
     >
       {selectOptions.map((optionField) => (

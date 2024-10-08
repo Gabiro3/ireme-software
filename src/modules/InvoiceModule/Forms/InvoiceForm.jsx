@@ -215,7 +215,7 @@ function LoadInvoiceForm({ subTotal = 0, current = null }) {
         <Row gutter={[12, -5]}>
           <Col className="gutter-row" span={5}>
             <Form.Item>
-              <Button type="primary" htmlType="submit" icon={<PlusOutlined />} block>
+              <Button type="primary" htmlType="submit" icon={<PlusOutlined />} block style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
                 {translate('Save')}
               </Button>
             </Form.Item>

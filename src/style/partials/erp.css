@@ -1,3 +1,10 @@
+.dynamic-form input,
+.dynamic-form select,
+.dynamic-form textarea,
+.dynamic-form button {
+  border-radius: 7px;
+}
+
 .moneyInput {
   width: 100%;
 }
@@ -5,3 +12,7 @@
 .moneyInput input {
   text-align: right;
 }
+.dynamic-form-element {
+  border-radius: 7px;
+}
+

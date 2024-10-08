@@ -125,6 +125,7 @@ export default function ReadItem({ config, selectedItem }) {
             }}
             type="primary"
             icon={<EditOutlined />}
+            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
           >
             {translate('Edit')}
           </Button>,

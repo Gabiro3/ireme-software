@@ -25,6 +25,7 @@ const About = () => {
             onClick={() => {
               window.open(`https://www.idurarapp.com/contact-us/`);
             }}
+            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
           >
             {translate('Contact us')}
           </Button>

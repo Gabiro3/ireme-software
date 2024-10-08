@@ -128,7 +128,7 @@ export default function AutoCompleteAsync({
         setSearching(false);
       }}
       onChange={handleSelectChange}
-      style={{ minWidth: '220px' }}
+      style={{ minWidth: '220px', borderRadius: '8px' }}
       // onSelect={handleOnSelect}
     >
       {selectOptions.map((optionField) => (

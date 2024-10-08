@@ -46,10 +46,10 @@ export default function CreateForm({ config, formElements, withUpload = false })
 
   return (
     <Loading isLoading={isLoading}>
-      <Form form={form} layout="vertical" onFinish={onSubmit}>
+      <Form form={form} layout="vertical" onFinish={onSubmit} className='dynamic-form'>
         {formElements}
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
             {translate('Submit')}
           </Button>
         </Form.Item>

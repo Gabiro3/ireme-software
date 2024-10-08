@@ -105,7 +105,7 @@ export default function UpdateForm({ config, formElements, withUpload = false })
               paddingRight: '5px',
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{ borderRadius: '8px', backgroundColor:'#153fd6' }}>
               {translate('Save')}
             </Button>
           </Form.Item>

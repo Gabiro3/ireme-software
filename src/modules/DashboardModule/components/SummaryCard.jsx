@@ -7,9 +7,9 @@ export default function AnalyticSummaryCard({ title, tagColor, data, prefix, isL
   const getTagColor = (title) => {
     switch (title.toLowerCase()) {
       case 'invoices':
-        return 'lightgreen';
+        return 'blue';
       case 'quote':
-        return 'lightpurple';
+        return 'purple';
       case 'paid':
         return 'green';  // Already assigned
       case 'unpaid':
@@ -90,6 +90,7 @@ export default function AnalyticSummaryCard({ title, tagColor, data, prefix, isL
                       whiteSpace: 'nowrap',
                       textOverflow: 'ellipsis',
                       direction: 'ltr',
+                      borderRadius: '7px'
                     }}
                   >
                     {data

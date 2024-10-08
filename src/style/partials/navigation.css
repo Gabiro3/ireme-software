@@ -6,8 +6,9 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  background: #fff;
+  background: #fafbfc;
   border-right: 1px solid #edf0f5;
+  border-radius: 10px;
 }
 
 .logo {
@@ -19,7 +20,7 @@
 }
 
 .sidebar-wraper {
-  background: #fff;
+  background: #fafbfc;
   display: block;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .tabsNavigation:hover span {
-  box-shadow: 0px 0px 30px 8px rgba(0, 115, 255, 0.15);
+  box-shadow: 0px 0px 30px 8px rgba(94, 157, 235, 0.15);
   background-color: transparent;
 }
 

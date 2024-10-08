@@ -59,6 +59,7 @@ function FormElement({ field, feedback, setFeedback }) {
         defaultValue={field.defaultValue}
         style={{
           width: '100%',
+          borderRadius: '7px'
         }}
       >
         {field.options?.map((option) => {
@@ -239,6 +240,7 @@ function FormElement({ field, feedback, setFeedback }) {
         }
         style={{
           width: '100%',
+          borderRadius: '7px'
         }}
       >
         {countryList.map((language) => (

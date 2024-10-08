@@ -63,6 +63,7 @@ const UpdateAdmin = ({ config }) => {
             type="primary"
             icon={<SaveOutlined />}
             htmlType="submit"
+            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
           >
             {translate('Save')}
           </Button>,

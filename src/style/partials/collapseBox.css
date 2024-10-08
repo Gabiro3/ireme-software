@@ -10,7 +10,7 @@
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #fafbfc;
   border-top: 1px solid #edf0f5;
   border-bottom: 1px solid #edf0f5;
 }
@@ -33,6 +33,7 @@
 
   background: #fff;
   z-index: 1;
+  border-radius: 8px;
 }
 .collapsed {
   overflow: hidden;
@@ -53,4 +54,5 @@
   display: inline-block;
   background-color: hsla(0, 0%, 100%, 0.8);
   z-index: 9;
+  border-radius: 8px;
 }

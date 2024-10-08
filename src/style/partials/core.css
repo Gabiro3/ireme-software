@@ -21,10 +21,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .shadow {
-  border: 1px solid #e0e0e0;
+  border: 1px solid #ffffff;
 }
 .shadow:hover {
-  border: 1px solid #bdbdbd;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 0px 10px 4px rgba(150, 190, 238, 0.3);
 }
 .line {
   border-top: 1px solid #edf0f5;
