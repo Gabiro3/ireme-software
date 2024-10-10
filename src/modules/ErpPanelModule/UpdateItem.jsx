@@ -25,13 +25,35 @@ function SaveForm({ form, translate }) {
   };
 
   return (
-    <Button onClick={handelClick} type="primary" icon={<PlusOutlined />} style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
+    <Button
+      onClick={handelClick}
+      type="primary"
+      icon={<PlusOutlined />}
+      style={{ borderRadius: '7px', backgroundColor: '#153fd6' }}
+    >
       {translate('update')}
     </Button>
   );
 }
 
 export default function UpdateItem({ config, UpdateForm }) {
+  const getTagColor = (title) => {
+    switch (title.toLowerCase()) {
+      case 'paid':
+        return 'lightgreen';
+      case 'unpaid':
+        return 'red';
+      case 'pending':
+        return 'purple'; // Already assigned
+      case 'partially':
+        return 'purple';
+      case 'sent':
+        return 'orange'; // Already assigned
+      default:
+        return 'blue'; // Default color
+    }
+  };
+
   const translate = useLanguage();
   let { entity } = config;
 
@@ -142,10 +164,41 @@ export default function UpdateItem({ config, UpdateForm }) {
         title={translate('update')}
         ghost={false}
         tags={[
-          <span key="status">{currentErp.status && translate(currentErp.status)}</span>,
+          <span key="status">
+            <Tag
+              color={getTagColor(currentErp.status && translate(currentErp.status))}
+              style={{
+                margin: '0 auto',
+                marginRight: '8px',
+                justifyContent: 'center',
+                maxWidth: '110px',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+                direction: 'ltr',
+                borderRadius: '7px',
+              }}
+            >
+              {currentErp.status && translate(currentErp.status)}
+            </Tag>
+          </span>,
           currentErp.paymentStatus && (
             <span key="paymentStatus">
-              {currentErp.paymentStatus && translate(currentErp.paymentStatus)}
+              <Tag
+                color={getTagColor(currentErp.paymentStatus && translate(currentErp.paymentStatus))}
+                style={{
+                  margin: '0 auto',
+                  justifyContent: 'center',
+                  maxWidth: '110px',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  direction: 'ltr',
+                  borderRadius: '7px',
+                }}
+              >
+                {currentErp.paymentStatus && translate(currentErp.paymentStatus)}
+              </Tag>
             </span>
           ),
         ]}

@@ -11,6 +11,23 @@ import UpdatePayment from './UpdatePayment';
 import { tagColor } from '@/utils/statusTagColor';
 
 export default function Payment({ config, currentItem }) {
+  const getTagColor = (title) => {
+    switch (title.toLowerCase()) {
+      case 'paid':
+        return 'lightgreen';
+      case 'unpaid':
+        return 'red';
+      case 'pending':
+        return 'purple'; // Already assigned
+      case 'partially':
+        return 'purple';
+      case 'sent':
+        return 'orange'; // Already assigned
+      default:
+        return 'blue'; // Default color
+    }
+  };
+
   const translate = useLanguage();
   const { entity, ENTITY_NAME } = config;
 
@@ -50,7 +67,27 @@ export default function Payment({ config, currentItem }) {
             onBack={() => navigate(`/${entity.toLowerCase()}`)}
             title={`Update  ${ENTITY_NAME} # ${currentErp.number}/${currentErp.year || ''}`}
             ghost={false}
-            tags={<span>{currentErp.paymentStatus}</span>}
+            tags={
+              <span>
+                <Tag
+                  color={getTagColor(
+                    currentErp.paymentStatus && translate(currentErp.paymentStatus)
+                  )}
+                  style={{
+                    margin: '0 auto',
+                    justifyContent: 'center',
+                    maxWidth: '110px',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    direction: 'ltr',
+                    borderRadius: '7px',
+                  }}
+                >
+                  {currentErp.paymentStatus && translate(currentErp.paymentStatus)}
+                </Tag>
+              </span>
+            }
             // subTitle="This is cuurent erp page"
             extra={[
               <Button

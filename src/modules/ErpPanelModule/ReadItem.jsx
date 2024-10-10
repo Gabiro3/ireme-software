@@ -68,6 +68,22 @@ const Item = ({ item, currentErp }) => {
 };
 
 export default function ReadItem({ config, selectedItem }) {
+  const getTagColor = (title) => {
+    switch (title.toLowerCase()) {
+      case 'paid':
+        return 'lightgreen';
+      case 'unpaid':
+        return 'red';
+      case 'pending':
+        return 'purple'; // Already assigned
+      case 'partially':
+        return 'purple';
+      case 'sent':
+        return 'orange'; // Already assigned
+      default:
+        return 'blue'; // Default color
+    }
+  };
   const translate = useLanguage();
   const { entity, ENTITY_NAME } = config;
   const dispatch = useDispatch();
@@ -132,10 +148,41 @@ export default function ReadItem({ config, selectedItem }) {
         title={`${ENTITY_NAME} # ${currentErp.number}/${currentErp.year || ''}`}
         ghost={false}
         tags={[
-          <span key="status">{currentErp.status && translate(currentErp.status)}</span>,
+          <span key="status">
+            <Tag
+              color={getTagColor(currentErp.status && translate(currentErp.status))}
+              style={{
+                margin: '0 auto',
+                justifyContent: 'center',
+                margin: '0 5px',
+                maxWidth: '110px',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+                direction: 'ltr',
+                borderRadius: '7px',
+              }}
+            >
+              {currentErp.status && translate(currentErp.status)}
+            </Tag>
+          </span>,
           currentErp.paymentStatus && (
             <span key="paymentStatus">
-              {currentErp.paymentStatus && translate(currentErp.paymentStatus)}
+              <Tag
+                color={getTagColor(currentErp.paymentStatus && translate(currentErp.paymentStatus))}
+                style={{
+                  margin: '0 auto',
+                  justifyContent: 'center',
+                  maxWidth: '110px',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  direction: 'ltr',
+                  borderRadius: '7px',
+                }}
+              >
+                {currentErp.paymentStatus && translate(currentErp.paymentStatus)}
+              </Tag>
             </span>
           ),
         ]}
@@ -193,7 +240,7 @@ export default function ReadItem({ config, selectedItem }) {
               );
               navigate(`/${entity.toLowerCase()}/update/${currentErp._id}`);
             }}
-            type="primary"
+            style={{ borderRadius: '7px', backgroundColor: '#153fd6', color: 'white' }}
             icon={<EditOutlined />}
           >
             {translate('Edit')}

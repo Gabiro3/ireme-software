@@ -25,6 +25,22 @@ import useMail from '@/hooks/useMail';
 import { useNavigate } from 'react-router-dom';
 
 export default function ReadItem({ config, selectedItem }) {
+  const getTagColor = (title) => {
+    switch (title.toLowerCase()) {
+      case 'paid':
+        return 'lightgreen';
+      case 'unpaid':
+        return 'red';
+      case 'pending':
+        return 'purple'; // Already assigned
+      case 'partially':
+        return 'purple';
+      case 'sent':
+        return 'orange'; // Already assigned
+      default:
+        return 'blue'; // Default color
+    }
+  };
   const translate = useLanguage();
   const { entity, ENTITY_NAME } = config;
   const dispatch = useDispatch();
@@ -78,7 +94,25 @@ export default function ReadItem({ config, selectedItem }) {
         }}
         title={`${ENTITY_NAME} # ${currentErp.number}/${currentErp.year || ''}`}
         ghost={false}
-        tags={<span>{currentErp.paymentStatus}</span>}
+        tags={
+          <span>
+            <Tag
+              color={getTagColor(currentErp.paymentStatus && translate(currentErp.paymentStatus))}
+              style={{
+                margin: '0 auto',
+                justifyContent: 'center',
+                maxWidth: '110px',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+                direction: 'ltr',
+                borderRadius: '7px',
+              }}
+            >
+              {currentErp.paymentStatus && translate(currentErp.paymentStatus)}
+            </Tag>
+          </span>
+        }
         extra={[
           <Button
             key={`${uniqueId()}`}
@@ -125,7 +159,7 @@ export default function ReadItem({ config, selectedItem }) {
             }}
             type="primary"
             icon={<EditOutlined />}
-            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
+            style={{ borderRadius: '7px', backgroundColor: '#153fd6' }}
           >
             {translate('Edit')}
           </Button>,

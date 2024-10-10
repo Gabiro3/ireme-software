@@ -29,10 +29,10 @@ export default function SideContent() {
         />
 
         <Title level={1} style={{ fontSize: 28 }}>
-          Free Open Source ERP / CRM
+          Ireme Software ERP / CRM
         </Title>
         <Text>
-          Accounting / Invoicing / Quote App <b /> based on Node.js React.js Ant Design
+          Accounting / Invoicing / Quotes App <b /> for SMEs in Rwanda.
         </Text>
 
         <div className="space20"></div>

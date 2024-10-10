@@ -43,7 +43,7 @@ const LoginPage = () => {
           <LoginForm />
           <Form.Item>
             <Button
-              type="primary"
+              style={{ borderRadius: '7px', color: 'white', backgroundColor: '#153fd6' }}
               htmlType="submit"
               className="login-form-button"
               loading={isLoading}

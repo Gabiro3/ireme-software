@@ -27,7 +27,50 @@
   height: 40vmin;
   pointer-events: none;
 }
+.ant-btn {
+  border-radius: 7px !important;
+}
+.primary {
+  background-color: #153fd6 !important; /* Change this to your desired shade of blue */
+  color: white; /* Optional: Change text color for better contrast */
+}
+.ant-input[type="email"],
+.ant-input[type="password"] {
+  border-radius: 7px !important; /* Apply border radius to email and password inputs */
+}
+.ant-input,
+.ant-textarea,
+.ant-select-selector,
+.ant-select-multiple .ant-select-selector,
+.ant-input-number-input,
+.ant-radio-inner {
+  border-radius: 7px !important; /* Apply border-radius of 7px */
+}
+.ant-checkbox-inner {
+  border-radius: 5px !important;
+  background-color: #153fd6 !important;
+}
+.ant-input-number {
+  border-radius: 5px !important; /* Apply border radius */
+}
+.ant-calendar-picker-input,
+.ant-picker {
+  border-radius: 7px !important; /* Apply border radius to the input */
+}
 
+/* Optional: Ensure the calendar popup has rounded corners as well */
+.ant-picker-panel {
+  border-radius: 7px !important; /* Apply border radius to the date picker panel */
+}
+
+.ant-menu-item-selected {
+  background-color: #e6efff !important; /* Change to your desired blue color */
+  color: #153fd6 !important; /* Change the text color to white */
+  border-radius: 7px !important;
+}
+.ant-menu-item:hover {
+  border-radius: 7px !important;
+}
 .login-form button[type='submit'] {
   margin-bottom: 20px;
 }
