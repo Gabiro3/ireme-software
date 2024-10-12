@@ -229,14 +229,25 @@ const request = {
   upload: async ({ entity, id, jsonData }) => {
     try {
       includeToken();
-      const response = await axios.patch(entity + '/upload/' + id, jsonData, {
+      var formData = new FormData();
+      if (jsonData.originFileObj) {
+        formData.append('file', jsonData.originFileObj); // if jsonData contains originFileObj
+      } else {
+        formData.append('file', jsonData); // if jsonData is the File object
+      }
+
+      // Log FormData contents
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+      }
+      const response = await axios.patch(entity + '/upload/' + id, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       successHandler(response, {
         notifyOnSuccess: true,
-        notifyOnFailed: true,
+        notifyOnFailed: false,
       });
       return response.data;
     } catch (error) {

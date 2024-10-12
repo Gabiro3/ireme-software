@@ -141,7 +141,7 @@ export const settingsAction = {
       let data = await request.upload({
         entity: entity,
         id: settingKey,
-        jsonData,
+        jsonData: jsonData.file
       });
 
       if (data.success === true) {

@@ -7,6 +7,7 @@ import { selectSettings } from '@/redux/settings/selectors';
 import { Button, Form } from 'antd';
 import Loading from '@/components/Loading';
 import useLanguage from '@/locale/useLanguage';
+import { fields } from '@/pages/Customer/config';
 
 export default function UpdateSettingForm({ config, children, withUpload, uploadSettingKey }) {
   let { entity, settingsCategory } = config;
@@ -19,7 +20,9 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
     console.log('🚀 ~ onSubmit ~ fieldsValue:', fieldsValue);
     if (withUpload) {
       if (fieldsValue.file) {
-        fieldsValue.file = fieldsValue.file[0].originFileObj;
+        const fileObj = fieldsValue.file[0];
+        fieldsValue.file = fileObj.originFileObj;
+        console.log(fieldsValue.file);
       }
       dispatch(
         settingsAction.upload({ entity, settingKey: uploadSettingKey, jsonData: fieldsValue })
@@ -59,7 +62,11 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
               paddingRight: '5px',
             }}
           >
-            <Button type="primary" htmlType="submit" style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ borderRadius: '7px', backgroundColor: '#153fd6' }}
+            >
               {translate('Save')}
             </Button>
           </Form.Item>
