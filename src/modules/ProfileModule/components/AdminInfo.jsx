@@ -35,7 +35,7 @@ const AdminInfo = ({ config }) => {
             }}
             type="primary"
             icon={<EditOutlined />}
-            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
+            style={{ borderRadius: '7px', backgroundColor: '#153fd6' }}
           >
             {translate('Edit')}
           </Button>,
@@ -45,7 +45,7 @@ const AdminInfo = ({ config }) => {
             onClick={() => {
               modal.open();
             }}
-            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
+            style={{ borderRadius: '7px' }}
           >
             {translate('Update Password')}
           </Button>,

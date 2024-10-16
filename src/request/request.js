@@ -235,11 +235,8 @@ const request = {
       } else {
         formData.append('file', jsonData); // if jsonData is the File object
       }
-
-      // Log FormData contents
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
-      }
+      console.log(entity);
+      console.log(id);
       const response = await axios.patch(entity + '/upload/' + id, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

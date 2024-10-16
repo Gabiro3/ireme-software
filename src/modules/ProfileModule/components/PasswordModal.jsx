@@ -49,7 +49,7 @@ const PasswordModal = () => {
           ]}
           hasFeedback
         >
-          <Input.Password />
+          <Input.Password style={{ borderRadius: '7px' }} />
         </Form.Item>
         <Form.Item
           label={translate('Confirm Password')}
@@ -71,7 +71,7 @@ const PasswordModal = () => {
             }),
           ]}
         >
-          <Input.Password autoComplete="new-password" />
+          <Input.Password autoComplete="new-password" style={{ borderRadius: '7px' }} />
         </Form.Item>
       </Form>
     </Modal>

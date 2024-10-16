@@ -4,6 +4,9 @@ import { UploadOutlined } from '@ant-design/icons';
 
 import useLanguage from '@/locale/useLanguage';
 
+// Variable to store the logo props
+let logoFile = null;
+
 export default function AppSettingForm() {
   const translate = useLanguage();
   const beforeUpload = (file) => {
@@ -15,6 +18,7 @@ export default function AppSettingForm() {
     if (!isLt2M) {
       message.error('Image must smaller than 5MB!');
     }
+    logoFile = file;
     return false;
   };
   return (
@@ -37,3 +41,6 @@ export default function AppSettingForm() {
     </>
   );
 }
+export const getLogo = () => {
+  return logoFile; // Return the logo file
+};

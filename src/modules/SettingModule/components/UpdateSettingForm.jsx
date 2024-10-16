@@ -3,11 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { settingsAction } from '@/redux/settings/actions';
 import { selectSettings } from '@/redux/settings/selectors';
-
+import { selectCurrentAdmin } from '@/redux/auth/selectors';
+import { API_BASE_URL } from '@/config/serverApiConfig';
 import { Button, Form } from 'antd';
 import Loading from '@/components/Loading';
 import useLanguage from '@/locale/useLanguage';
-import { fields } from '@/pages/Customer/config';
+import errorHandler from '@/request/errorHandler';
+import successHandler from '@/request/successHandler';
+import axios from 'axios';
+import { fetchFieldValues } from '../CompanySettingsModule/SettingsForm';
+import { getLogo } from '../CompanyLogoSettingsModule/forms/AppSettingForm';
 
 export default function UpdateSettingForm({ config, children, withUpload, uploadSettingKey }) {
   let { entity, settingsCategory } = config;
@@ -15,33 +20,77 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
   const { result, isLoading } = useSelector(selectSettings);
   const translate = useLanguage();
   const [form] = Form.useForm();
+  const currentAdmin = useSelector(selectCurrentAdmin);
+  const adminID = currentAdmin?.id || '1';
 
-  const onSubmit = (fieldsValue) => {
+  const onSubmit = async (fieldsValue) => {
     console.log('🚀 ~ onSubmit ~ fieldsValue:', fieldsValue);
+    console.log(uploadSettingKey);
     if (withUpload) {
-      if (fieldsValue.file) {
-        const fileObj = fieldsValue.file[0];
-        fieldsValue.file = fileObj.originFileObj;
-        console.log(fieldsValue.file);
+      try {
+        const formData = new FormData();
+        const logo = getLogo();
+        formData.append('company_logo', logo); // Add the logo file to the form data
+        const response = await axios.patch(`${API_BASE_URL}update-company/${companyID}`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        successHandler(response, {
+          notifyOnSuccess: true, // Notify the user on success
+          notifyOnFailed: false, // No failure notification since it's a success
+        });
+      } catch (error) {
+        errorHandler(error, {
+          notifyOnFailed: true, // Notify the user on failure
+        });
       }
-      dispatch(
-        settingsAction.upload({ entity, settingKey: uploadSettingKey, jsonData: fieldsValue })
-      );
     } else {
-      const settings = [];
+      try {
+        const companyID = '1'; // Replace with logic to get company ID
 
-      for (const [key, value] of Object.entries(fieldsValue)) {
-        settings.push({ settingKey: key, settingValue: value });
+        const fieldValues = fetchFieldValues();
+        const logo = getLogo();
+        // Prepare form data for API request
+        const formData = {
+          company_name: fieldValues.company_name,
+          company_address: fieldValues.company_address,
+          country: fieldValues.company_country,
+          email: fieldValues.company_email,
+          phone_number: fieldValues.company_phone,
+          company_website: fieldValues.company_website,
+          tax_number: fieldValues.company_tax_number,
+          vat_number: fieldValues.company_vat_number,
+          reg_number: fieldValues.company_reg_number,
+          company_logo: logo,
+          adminID: adminID, // Include the admin ID in the payload
+        };
+
+        // Make the PATCH request
+        const response = await axios.patch(`${API_BASE_URL}update-company/${companyID}`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        successHandler(response, {
+          notifyOnSuccess: true, // Notify the user on success
+          notifyOnFailed: false, // No failure notification since it's a success
+        });
+        // Handle success (e.g., show a success message or refresh the data)
+      } catch (error) {
+        errorHandler(error, {
+          notifyOnFailed: true, // Notify the user on failure
+        });
+        // Handle error (e.g., show an error message)
       }
-
-      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } }));
     }
   };
 
   useEffect(() => {
-    const current = result[settingsCategory];
-
-    form.setFieldsValue(current);
+    if (result && result[settingsCategory]) {
+      const current = result[settingsCategory];
+      form.setFieldsValue(current); // Populate form with current settings
+    }
   }, [result]);
 
   return (
@@ -49,6 +98,7 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
       <Loading isLoading={isLoading}>
         <Form
           form={form}
+          initialValues={result[settingsCategory] || {}}
           onFinish={onSubmit}
           // onValuesChange={handleValuesChange}
           labelCol={{ span: 10 }}

@@ -3,7 +3,6 @@ import {
   CreditCardOutlined,
   DollarOutlined,
   FileImageOutlined,
-  TrophyOutlined,
 } from '@ant-design/icons';
 
 import TabsContent from '@/components/TabsContent/TabsContent';
@@ -30,14 +29,8 @@ export default function Settings() {
     {
       key: 'company_settings',
       label: translate('Company Settings'),
-      icon: <TrophyOutlined />,
-      children: <CompanySettings />,
-    },
-    {
-      key: 'company_logo',
-      label: translate('Company Logo'),
       icon: <FileImageOutlined />,
-      children: <CompanyLogoSettings />,
+      children: <CompanySettings />,
     },
     {
       key: 'currency_settings',
