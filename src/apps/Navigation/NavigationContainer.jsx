@@ -5,14 +5,13 @@ import { Button, Drawer, Layout, Menu } from 'antd';
 import { useAppContext } from '@/context/appContext';
 
 import useLanguage from '@/locale/useLanguage';
-import logoIcon from '@/style/images/logo-icon.svg';
-import logoText from '@/style/images/logo-text.svg';
+import logoIcon from '@/style/images/fig-ntext.svg';
+import logoText from '@/style/images/logo-text (2).svg';
 
 import useResponsive from '@/hooks/useResponsive';
 
 import {
   SettingOutlined,
-  CustomerServiceOutlined,
   ContainerOutlined,
   FileSyncOutlined,
   DashboardOutlined,
@@ -26,6 +25,7 @@ import {
   FilterOutlined,
   WalletOutlined,
   ReconciliationOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -51,12 +51,12 @@ function Sidebar({ collapsible, isMobile = false }) {
   const items = [
     {
       key: 'dashboard',
-      icon: <DashboardOutlined />,
+      icon: <HomeOutlined />,
       label: <Link to={'/'}>{translate('dashboard')}</Link>,
     },
     {
       key: 'customer',
-      icon: <CustomerServiceOutlined />,
+      icon: <UserOutlined />,
       label: <Link to={'/customer'}>{translate('customers')}</Link>,
     },
 
@@ -142,7 +142,6 @@ function Sidebar({ collapsible, isMobile = false }) {
           borderRadius: '8px',
           backgroundColor: '#fafbfc',
         }),
-        
       }}
       theme={'light'}
     >
@@ -153,16 +152,16 @@ function Sidebar({ collapsible, isMobile = false }) {
           cursor: 'pointer',
         }}
       >
-        <img src={logoIcon} alt="Logo" style={{ marginLeft: '-5px', height: '40px' }} />
+        <img src={logoIcon} alt="Logo" style={{ marginLeft: '-5px', height: '50px' }} />
 
         {!showLogoApp && (
           <img
             src={logoText}
             alt="Logo"
             style={{
-              marginTop: '3px',
-              marginLeft: '10px',
-              height: '38px',
+              marginTop: '-7px',
+              marginLeft: '5px',
+              height: '60px',
             }}
           />
         )}
@@ -174,7 +173,7 @@ function Sidebar({ collapsible, isMobile = false }) {
         selectedKeys={[currentPath]}
         style={{
           width: 256,
-          backgroundColor: '#fafbfc'
+          backgroundColor: '#fafbfc',
         }}
       />
     </Sider>

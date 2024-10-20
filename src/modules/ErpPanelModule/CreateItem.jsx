@@ -31,7 +31,12 @@ function SaveForm({ form }) {
   };
 
   return (
-    <Button onClick={handelClick} type="primary" icon={<PlusOutlined />} style={{borderRadius: '7px', backgroundColor: '#153fd6'}}>
+    <Button
+      onClick={handelClick}
+      type="primary"
+      icon={<PlusOutlined />}
+      style={{ borderRadius: '7px', backgroundColor: '#153fd6' }}
+    >
       {translate('Save')}
     </Button>
   );
@@ -112,8 +117,11 @@ export default function CreateItem({ config, CreateForm }) {
         backIcon={<ArrowLeftOutlined />}
         title={translate('New')}
         ghost={false}
-        tags={<Tag>{translate('Draft')}</Tag>}
-        // subTitle="This is create page"
+        tags={
+          <Tag color="#d3adf7" style={{ borderRadius: '7px', color: '#531dbf' }}>
+            {translate('Draft')}
+          </Tag>
+        }
         extra={[
           <Button
             key={`${uniqueId()}`}

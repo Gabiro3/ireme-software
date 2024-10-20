@@ -9,6 +9,11 @@ import { API_BASE_URL } from '@/config/serverApiConfig';
 import { Buffer } from 'buffer';
 let values = [];
 let logoFile = null;
+let isCompanyNew = false;
+const authData = localStorage.getItem('auth');
+const parsedAuthData = JSON.parse(authData);
+const adminID = parsedAuthData.current?._id;
+let companyID;
 const formItems = [
   {
     settingKey: 'company_name',
@@ -55,19 +60,18 @@ const formItems = [
 const SettingForm = () => {
   const [form] = Form.useForm(); // Initialize form instance
   const translate = useLanguage();
-  const currentAdmin = useSelector(selectCurrentAdmin);
-  const adminID = currentAdmin?.id || '1'; // Assume adminID is in the redux store
   const [logoUrl, setLogoUrl] = useState(null);
 
   const formRef = useRef(form);
   // Function to fetch company data
   const fetchCompanyData = async () => {
     try {
-      console.log(`${API_BASE_URL}company`);
+      console.log(adminID);
       const response = await axios.get(`${API_BASE_URL}company`, {
         params: { adminID }, // Send adminID as query parameter
       });
       const companyData = response.data.company;
+      companyID = companyData.id;
 
       // Populate the form with fetched data
       form.setFieldsValue({
@@ -85,7 +89,8 @@ const SettingForm = () => {
       let base64 = Buffer.from(companyData.company_logo.data).toString('base64');
       setLogoUrl(`data:image/png;base64,${base64}`);
     } catch (error) {
-      console.error('Error fetching company data:', error);
+      isCompanyNew = true;
+      return null;
     }
   };
 
@@ -173,4 +178,7 @@ export const fetchFieldValues = () => {
   return values; // Retrieve current form values
 }; // Export the function
 export const getLogo = () => logoFile;
+export const getAdmin = () => adminID;
+export const getCompanyId = () => companyID;
+export const getCompanyStatus = () => isCompanyNew;
 export default SettingForm;

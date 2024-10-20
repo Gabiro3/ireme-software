@@ -1,4 +1,4 @@
-import { Dropdown, Table } from 'antd';
+import { Dropdown, Table, notification } from 'antd';
 
 import { request } from '@/request';
 import useFetch from '@/hooks/useFetch';
@@ -44,6 +44,14 @@ export default function RecentTable({ ...props }) {
     navigate(`/${entity}/update/${record._id}`);
   };
   const handleDownload = (record) => {
+    notification.config({
+      duration: 20,
+      maxCount: 1,
+    });
+    notification.success({
+      message: 'PDF Download',
+      description: 'Your document is being processed, download will start automatically',
+    });
     window.open(`${DOWNLOAD_BASE_URL}${entity}/${entity}-${record._id}.pdf`, '_blank');
   };
 

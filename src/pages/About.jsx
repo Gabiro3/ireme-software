@@ -7,25 +7,22 @@ const About = () => {
   return (
     <Result
       status="info"
-      title={'IDURAR'}
+      title={'Ireme Software'}
       subTitle={translate('Do you need help on customize of this app')}
       extra={
         <>
           <p>
-            Website : <a href="https://www.idurarapp.com">www.idurarapp.com</a>{' '}
+            Website : <a href="https://ireme-software.vercel.app">www.ireme-software.co.rw</a>{' '}
           </p>
           <p>
-            GitHub :{' '}
-            <a href="https://github.com/idurar/idurar-erp-crm">
-              https://github.com/idurar/idurar-erp-crm
-            </a>
+            Email : <a href="mailto:support@schoolie.co.rw">support@schoolie.co.rw</a>
           </p>
           <Button
             type="primary"
             onClick={() => {
-              window.open(`https://www.idurarapp.com/contact-us/`);
+              window.open(`https://ireme-software.vercel.app`);
             }}
-            style={{borderRadius: '7px', backgroundColor: '#153fd6'}}
+            style={{ borderRadius: '7px', backgroundColor: '#153fd6' }}
           >
             {translate('Contact us')}
           </Button>

@@ -30,14 +30,49 @@
 .ant-btn {
   border-radius: 7px !important;
 }
+/* Targeting the Modal */
+.ant-modal {
+  border-radius: 5px !important; /* Set border radius */
+}
+
+/* Targeting the Modal primary button (OK button) */
+.ant-btn-primary {
+  background-color: #153fd6 !important; /* Set primary button color */
+  border-color: #153fd6 !important; /* Set border color for the button */
+}
+/* Add a unified hover color for all elements of blue */
+
+/* Optionally: Hover and focus states for the primary button */
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: #0056b3 !important; /* Slightly darker shade of blue */
+  border-color: #0056b3 !important;
+}
+
 .primary {
   background-color: #153fd6 !important; /* Change this to your desired shade of blue */
   color: white; /* Optional: Change text color for better contrast */
 }
-.ant-input[type="email"],
-.ant-input[type="password"] {
+.ant-input[type='email'],
+.ant-input[type='password'] {
   border-radius: 7px !important; /* Apply border radius to email and password inputs */
 }
+/* Targeting the DatePicker input */
+.ant-picker {
+  border-radius: 7px !important; /* Border radius for DatePicker input */
+}
+
+/* Targeting the DatePicker popup calendar */
+.ant-picker-dropdown {
+  border-radius: 7px !important; /* Border radius for DatePicker popup calendar */
+}
+
+/* Targeting the InputNumber component */
+.ant-input-number,
+.ant-input-number-input {
+  border-radius: 7px !important; /* Border radius for InputNumber */
+}
+
 .ant-input,
 .ant-textarea,
 .ant-select-selector,
@@ -61,6 +96,11 @@
 /* Optional: Ensure the calendar popup has rounded corners as well */
 .ant-picker-panel {
   border-radius: 7px !important; /* Apply border radius to the date picker panel */
+}
+.ant-input,
+.ant-input-password,
+.ant-select-selector {
+  border-radius: 7px !important;
 }
 
 .ant-menu-item-selected {

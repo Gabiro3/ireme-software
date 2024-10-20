@@ -13,10 +13,18 @@ export const login = async ({ loginData }) => {
 
     const { status, data } = response;
 
+    if (data.success) {
+      const { companyData } = data.result;
+
+      // Store company data in local storage
+      localStorage.setItem('adminID', data._id); // Storing _id as adminID
+      localStorage.setItem('companyData', JSON.stringify(companyData)); // Store the entire company data
+    }
+
     successHandler(
       { data, status },
       {
-        notifyOnSuccess: false,
+        notifyOnSuccess: true,
         notifyOnFailed: true,
       }
     );
@@ -101,7 +109,3 @@ export const logout = async () => {
     return errorHandler(error);
   }
 };
-
-//  console.log(
-//    '🚀 Welcome to IDURAR ERP CRM! Did you know that we also offer commercial customization services? Contact us at hello@idurarapp.com for more information.'
-//  );
