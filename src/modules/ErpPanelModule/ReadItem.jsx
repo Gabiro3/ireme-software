@@ -152,7 +152,6 @@ export default function ReadItem({ config, selectedItem }) {
             <Tag
               color={getTagColor(currentErp.status && translate(currentErp.status))}
               style={{
-                margin: '0 auto',
                 justifyContent: 'center',
                 margin: '0 5px',
                 maxWidth: '110px',

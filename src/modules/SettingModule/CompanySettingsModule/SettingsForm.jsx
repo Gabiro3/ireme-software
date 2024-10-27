@@ -8,8 +8,8 @@ import { selectCurrentAdmin } from '@/redux/auth/selectors';
 import { API_BASE_URL } from '@/config/serverApiConfig';
 import { Buffer } from 'buffer';
 let values = [];
-let logoFile = null;
-let isCompanyNew = false;
+let logoFile;
+let isCompanyNew;
 const authData = localStorage.getItem('auth');
 const parsedAuthData = JSON.parse(authData);
 const adminID = parsedAuthData.current?._id;
@@ -40,10 +40,6 @@ const formItems = [
     valueType: 'string',
   },
   {
-    settingKey: 'company_website',
-    valueType: 'string',
-  },
-  {
     settingKey: 'company_tax_number',
     valueType: 'string',
   },
@@ -66,12 +62,19 @@ const SettingForm = () => {
   // Function to fetch company data
   const fetchCompanyData = async () => {
     try {
-      console.log(adminID);
       const response = await axios.get(`${API_BASE_URL}company`, {
         params: { adminID }, // Send adminID as query parameter
       });
+      if (!response.data || !response.data.company) {
+        // No data means the company is new
+        isCompanyNew = true;
+        return;
+      }
       const companyData = response.data.company;
       companyID = companyData.id;
+      if (companyID) {
+        isCompanyNew = false;
+      }
 
       // Populate the form with fetched data
       form.setFieldsValue({
@@ -89,7 +92,6 @@ const SettingForm = () => {
       let base64 = Buffer.from(companyData.company_logo.data).toString('base64');
       setLogoUrl(`data:image/png;base64,${base64}`);
     } catch (error) {
-      isCompanyNew = true;
       return null;
     }
   };
@@ -107,8 +109,8 @@ const SettingForm = () => {
   };
   // Handle logo upload
   const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
+    const isJpgOrPng = file.type === 'image/png';
+    if (!isPng) {
       message.error('You can only upload JPG/PNG file!');
     }
     const isLt2M = file.size / 1024 / 1024 < 5;
@@ -122,7 +124,7 @@ const SettingForm = () => {
   return (
     <Form form={form} onValuesChange={handleFormChange}>
       {logoUrl && (
-        <Form.Item label={translate('Current Company Logo')}>
+        <Form.Item label={translate('Current Logo')}>
           <Image
             src={logoUrl}
             alt="Company Logo"
@@ -177,8 +179,10 @@ const SettingForm = () => {
 export const fetchFieldValues = () => {
   return values; // Retrieve current form values
 }; // Export the function
-export const getLogo = () => logoFile;
 export const getAdmin = () => adminID;
 export const getCompanyId = () => companyID;
 export const getCompanyStatus = () => isCompanyNew;
+export const getLogo = () => {
+  return logoFile;
+};
 export default SettingForm;

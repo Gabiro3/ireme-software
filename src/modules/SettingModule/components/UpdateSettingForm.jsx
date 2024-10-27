@@ -8,7 +8,7 @@ import errorHandler from '@/request/errorHandler';
 import successHandler from '@/request/successHandler';
 import axios from 'axios';
 import { fetchFieldValues } from '../CompanySettingsModule/SettingsForm';
-import { getLogo } from '../CompanyLogoSettingsModule/forms/AppSettingForm';
+import { getLogo } from '../CompanySettingsModule/SettingsForm';
 import { getCompanyStatus } from '../CompanySettingsModule/SettingsForm';
 import { getAdmin } from '../CompanySettingsModule/SettingsForm';
 import { getCompanyId } from '../CompanySettingsModule/SettingsForm';
@@ -62,7 +62,7 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
           });
           successHandler(response, {
             notifyOnSuccess: true, // Notify the user on success
-            notifyOnFailed: false, // No failure notification since it's a success
+            notifyOnFailed: true, // No failure notification since it's a success
           });
         } else {
           response = await axios.patch(`${API_BASE_URL}update-company/${companyID}`, formData, {
@@ -72,7 +72,7 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
           });
           successHandler(response, {
             notifyOnSuccess: true, // Notify the user on success
-            notifyOnFailed: false, // No failure notification since it's a success
+            notifyOnFailed: true, // No failure notification since it's a success
           });
         }
         // Handle success (e.g., show a success message or refresh the data)

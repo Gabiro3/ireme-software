@@ -51,6 +51,7 @@ const RegisterPage = () => {
             >
               {translate('Create Account')}
             </Button>
+            {translate('Or')} <a href="/login"> {translate('Log in')} </a>
           </Form.Item>
         </Form>
       </Loading>
