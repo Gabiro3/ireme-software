@@ -49,7 +49,7 @@ const RegisterPage = () => {
               loading={isLoading}
               size="large"
             >
-              {translate('Create Account')}
+              {translate('Register Account')}
             </Button>
             {translate('Or')} <a href="/login"> {translate('Log in')} </a>
           </Form.Item>
