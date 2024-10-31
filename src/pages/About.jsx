@@ -15,7 +15,7 @@ const About = () => {
             Website : <a href="https://ireme-software.vercel.app">www.ireme-software.co.rw</a>{' '}
           </p>
           <p>
-            Email : <a href="mailto:support@schoolie.co.rw">support@schoolie.co.rw</a>
+            Email : <a href="ireme.software@gmail.com">ireme.software@gmail.com</a>
           </p>
           <Button
             type="primary"

@@ -25,7 +25,7 @@ const RegisterPage = () => {
   };
 
   useEffect(() => {
-    if (isSuccess) navigate('/');
+    if (isSuccess) navigate('/login');
   }, [isSuccess]);
 
   const FormContainer = () => {

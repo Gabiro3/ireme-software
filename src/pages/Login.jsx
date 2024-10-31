@@ -10,7 +10,6 @@ import { Form, Button } from 'antd';
 import { login } from '@/redux/auth/actions';
 import { selectAuth } from '@/redux/auth/selectors';
 import LoginForm from '@/forms/LoginForm';
-import RegisterForm from '@/forms/RegisterForm'
 import Loading from '@/components/Loading';
 import AuthModule from '@/modules/AuthModule';
 
@@ -52,7 +51,14 @@ const LoginPage = () => {
             >
               {translate('Log in')}
             </Button>
-            {translate('Or')} <a href="/register"> {translate('Create an account')} </a>
+            <Button
+              type="primary"
+              onClick={() => {
+                navigate(`/register`);
+              }}
+            >
+              {translate('Create an account')}
+            </Button>
           </Form.Item>
         </Form>
       </Loading>
