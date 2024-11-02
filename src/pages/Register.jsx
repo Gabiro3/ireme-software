@@ -52,7 +52,7 @@ const RegisterPage = () => {
               {translate('Register Account')}
             </Button>
             <Button
-              type="primary"
+              type="secondary"
               onClick={() => {
                 navigate(`/login`);
               }}
